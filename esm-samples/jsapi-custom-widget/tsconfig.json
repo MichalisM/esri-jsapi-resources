@@ -15,7 +15,8 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,        
     "jsx": "react",
-    "jsxFactory": "tsx"  
+    "jsxFactory": "tsx",
+    "outDir": "./dist/",
   },
   "include": ["./src"]
 }

@@ -3,31 +3,20 @@ import './style.css'
 import ArcGISMap from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import * as intl from "@arcgis/core/intl";
-
+import { setAssetPath } from "@esri/calcite-components/dist/components";
 import Recenter from './widget';
+import esriConfig from "@arcgis/core/config";
 
-/*
-* Messages are for rendering strings within the widget.
-* When the MessageBundleLoader object is registered, it will be used to 
-* fetch the strings in the user's locale.
-*
-* The Vite guide has more information about using the /public directory. 
-* https://vitejs.dev/guide/assets.html#the-public-directory
-*/
-const loader = {
-  pattern: "/esm-widget-vite/assets/",
-  async fetchMessageBundle(bundleId: string, locale: any) {
-    const [, filename] = bundleId.split("/t9n/");
+esriConfig.assetsPath = "./core/assets";
+setAssetPath(`${location.origin}/calcite/assets`);
 
-    const knownLocale = intl.normalizeMessageBundleLocale(locale);
-    const bundlePath = `./assets/t9n/${filename}_${knownLocale}.json`;
-
-    const response = await fetch(bundlePath);
-    return response.json();
-  }
-}
-
-intl.registerMessageBundleLoader(loader);
+intl.registerMessageBundleLoader(
+  intl.createJSONLoader({
+    pattern: "my-application/", // The pattern is used to match the string in `intl.fetchMessageBundle("my-application/translations/MyBundle")`
+    base: "my-application", // This removes the base, ie. "translations/MyBundle"
+      location: new URL("./translations/", window.location.href),
+  })
+);
 
 const map = new ArcGISMap({
   basemap: "streets-vector"

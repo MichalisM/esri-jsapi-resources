@@ -6,6 +6,10 @@ import { tsx, messageBundle } from "@arcgis/core/widgets/support/widget";
 import Point from "@arcgis/core/geometry/Point";
 import MapView from "@arcgis/core/views/MapView";
 import Widget from "@arcgis/core/widgets/Widget";
+import "@esri/calcite-components/dist/components/calcite-button";
+import "@esri/calcite-components/dist/components/calcite-icon";
+import "@esri/calcite-components/dist/components/calcite-date-picker";
+import "@esri/calcite-components/dist/calcite/calcite.css";
 
 type Coordinates = Point | number[] | any;
 
@@ -92,7 +96,7 @@ class Recenter extends Widget {
   // ------------------------------------
 
   @property()
-  @messageBundle("/esm-widget-vite/assets/t9n/widget")
+  @messageBundle("my-application/widget")
   messages: { title: string; };
 
   //-------------------------------------------------------------------
@@ -117,7 +121,7 @@ class Recenter extends Widget {
         class={CSS.base}
         styles={styles}
         onclick={this._defaultCenter}
-      > <div id='widgetTitle'>{this.messages.title || "Error"}</div>
+      > <div id='widgetTitle'>{this.messages.title || "Error"} <calcite-icon icon="banana"></calcite-icon></div>
         <p>x: {Number(x).toFixed(3)}</p>
         <p>y: {Number(y).toFixed(3)}</p>
         <p>scale: {Number(scale).toFixed(3)}</p>
