@@ -10,7 +10,7 @@ import esriConfig from "@arcgis/core/config";
 import "@esri/calcite-components/dist/components/calcite-button";
 
 esriConfig.assetsPath = "./core/assets";
-setAssetPath(`${location.origin}/calcite/assets`);
+setAssetPath(`${window.location.href}calcite/assets`);
 
 intl.registerMessageBundleLoader(
   intl.createJSONLoader({
