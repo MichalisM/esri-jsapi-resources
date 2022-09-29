@@ -6,10 +6,9 @@ import { tsx, messageBundle } from "@arcgis/core/widgets/support/widget";
 import Point from "@arcgis/core/geometry/Point";
 import MapView from "@arcgis/core/views/MapView";
 import Widget from "@arcgis/core/widgets/Widget";
-import "@esri/calcite-components/dist/components/calcite-button";
+
 import "@esri/calcite-components/dist/components/calcite-icon";
 import "@esri/calcite-components/dist/components/calcite-date-picker";
-import "@esri/calcite-components/dist/calcite/calcite.css";
 
 type Coordinates = Point | number[] | any;
 
@@ -125,6 +124,8 @@ class Recenter extends Widget {
         <p>x: {Number(x).toFixed(3)}</p>
         <p>y: {Number(y).toFixed(3)}</p>
         <p>scale: {Number(scale).toFixed(3)}</p>
+        <br/>
+        <calcite-date-picker></calcite-date-picker>
       </div>
     );
   }

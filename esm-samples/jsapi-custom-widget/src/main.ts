@@ -7,6 +7,8 @@ import { setAssetPath } from "@esri/calcite-components/dist/components";
 import Recenter from './widget';
 import esriConfig from "@arcgis/core/config";
 
+import "@esri/calcite-components/dist/components/calcite-button";
+
 esriConfig.assetsPath = "./core/assets";
 setAssetPath(`${location.origin}/calcite/assets`);
 
@@ -34,7 +36,7 @@ view.when(() => {
 
   // Demonstrate using different locales.
   // Locale strings are set under /assets/t9n/
-  const localeBtn = document.createElement("button");
+  const localeBtn = document.createElement("calcite-button");
   localeBtn.innerText = "Set locale to French";
   view.ui.add(localeBtn, "top-right");  
   localeBtn.addEventListener("click", () => {
