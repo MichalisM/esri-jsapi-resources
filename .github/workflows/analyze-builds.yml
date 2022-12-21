@@ -2,13 +2,13 @@ name: ESM Sample Metrics
 on:
   pull_request:
     types: [opened, reopened, synchronize, labeled, unlabeled]
-    branches: [master]
+    branches: [main]
 jobs:
   analyze:
     if: "!contains(github.event.pull_request.labels.*.name, 'draft') && github.actor!='dependabot-preview[bot]'"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
@@ -18,7 +18,7 @@ jobs:
         run: |
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           # package.json files changed in the branch
-          packages_changed=$(git diff --name-only "$current_branch" $(git merge-base "$current_branch" origin/master) -- "./esm-samples/**/package.json")
+          packages_changed=$(git diff --name-only "$current_branch" $(git merge-base "$current_branch" origin/main) -- "./esm-samples/**/package.json")
           # metric files changed in the previous commit
           metrics_changed=$(git diff --name-only HEAD^ HEAD -- "./esm-samples/.metrics/*.csv")
           if [ -z "$packages_changed" ]; then
@@ -29,13 +29,13 @@ jobs:
           else
             echo "package.json files changed: $packages_changed"
             echo "analyzing builds"
-            echo "::set-output name=skip::false"
+            echo "skip=false" >> $GITHUB_OUTPUT
           fi
       - if: steps.build.outputs.skip == 'false'
         name: setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version: 16
       - if: steps.build.outputs.skip == 'false'
         name: install dependencies for sample metrics script
         run: |
@@ -47,7 +47,9 @@ jobs:
       - name: push sample metrics analysis
         if: steps.build.outputs.skip == 'false'
         run: |
+          git stash
           git pull
+          git stash pop
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add ./esm-samples/.metrics/*.csv

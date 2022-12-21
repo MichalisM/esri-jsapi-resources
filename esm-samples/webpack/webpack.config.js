@@ -15,7 +15,9 @@ module.exports = {
     clean: true
   },
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     port: 3001,
   },
@@ -37,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      title: 'ArcGIS API  for JavaScript',
+      title: 'ArcGIS Maps SDK  for JavaScript',
       template: './public/index.html',
       filename: './index.html',
       chunksSortMode: 'none',
