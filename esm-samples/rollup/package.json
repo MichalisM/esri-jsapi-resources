@@ -1,17 +1,18 @@
 {
+  "name": "jsapi-rollup",  
   "private": true,
   "type": "module",
   "dependencies": {
-    "@arcgis/core": "~4.25.0"
+    "@arcgis/core": "~4.27.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^23.0.2",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-terser": "~0.1.0",
-    "rollup": "^3.2.5",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "~0.4.3",
+    "rollup": "^3.23.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-serve": "^2.0.1"
+    "rollup-plugin-serve": "^2.0.2"
   },
   "scripts": {
     "start": "rollup -c rollup.config.js",

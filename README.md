@@ -16,10 +16,13 @@ A collection of resources for developers using the [ArcGIS Maps SDK for JavaScri
 * [HTML for handling callbacks](./oauth/README.md)
 
 ### 3.x (Legacy)
-* The version 3.x samples can be downloaded or [checked out](https://git-scm.com/book/en/v2/Git-Basics-Tagging) via the [`legacy` releases tag](https://github.com/Esri/jsapi-resources/releases/tag/legacy). 
+* 3.x samples can be downloaded or [checked out](https://git-scm.com/book/en/v2/Git-Basics-Tagging) via the [`legacy` releases tag](https://github.com/Esri/jsapi-resources/releases/tag/legacy). 
 
 ## Instructions
 Refer to the README files in each subdirectory of this repo for specific instructions on how to use a particular resource.
+
+## Troubleshooting
+For recommendations on identifying and solving issues in the ES module samples, see the [troubleshooting guide](./TROUBLESHOOTING.md).
 
 ## Resources
 * [ArcGIS Maps SDK for JavaScript](https://js.arcgis.com)
@@ -30,7 +33,7 @@ Refer to the README files in each subdirectory of this repo for specific instruc
 Please see our [guidelines for contributing](CONTRIBUTING.md).
 
 ## Licensing
-Copyright 2022 Esri
+Copyright 2023 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
